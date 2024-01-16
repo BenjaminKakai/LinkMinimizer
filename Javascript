@@ -1,0 +1,19 @@
+document.getElementById('shortenBtn').addEventListener('click', function() {
+    // Retrieve the value from the input field
+    var originalUrl = document.getElementById('urlInput').value;
+
+    // Check if the input is not empty
+    if (originalUrl) {
+        // Simulate URL shortening by encoding the original URL (this is just for demonstration)
+        var encodedUrl = btoa(originalUrl).substring(0, 8);
+
+        // Create the shortened URL (this is a simulated URL and not a real link)
+        var shortenedUrl = 'https://short.url/' + encodedUrl;
+
+        // Display the shortened URL
+        document.getElementById('result').innerHTML = 'Shortened URL: <a href="' + shortenedUrl + '" target="_blank">' + shortenedUrl + '</a>';
+    } else {
+        // If the input is empty, prompt the user to enter a URL
+        document.getElementById('result').textContent = 'Please enter a URL.';
+    }
+});
