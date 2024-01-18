@@ -19,13 +19,12 @@ document.getElementById('shortenBtn').addEventListener('click', function () {
     .then(data => {
         const shortId = data.shortUrl.split('/').pop();
         resultElement.innerHTML = `
-            Shortened URL: <a href="#" id="shortUrlLink">${data.shortUrl}</a>
+            Shortened URL: <a href="${data.shortUrl}" id="shortUrlLink" target="_blank">${data.shortUrl}</a>
             <div id="analyticsResult"></div>
         `;
-        
+
         document.getElementById('shortUrlLink').addEventListener('click', function(event) {
-            event.preventDefault();
-            
+            // Fetch analytics on click but do not prevent the default action
             fetch(`/analytics/${shortId}`)
             .then(response => response.json())
             .then(analyticsData => {
@@ -33,15 +32,9 @@ document.getElementById('shortenBtn').addEventListener('click', function () {
                     <strong>Clicks:</strong> ${analyticsData.clicks}<br>
                     <strong>Unique Visitors:</strong> ${analyticsData.uniqueVisitors}
                 `;
-
-                // Optionally, you can add a button or link here for the user to manually proceed to the URL
-                // Example: 
-                // document.getElementById('analyticsResult').innerHTML += '<br><button onclick="window.location.href=\'' + data.shortUrl + '\'">Go to Link</button>';
             })
             .catch(analyticsError => {
                 console.error('Analytics Error:', analyticsError);
-                // Directly redirecting to the URL in case of an analytics fetch error
-                window.location.href = data.shortUrl;
             });
         });
     })
