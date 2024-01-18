@@ -14,3 +14,8 @@ Welcome to the Link Shortener repository! This project offers a simple yet effic
 
 
 **User-Friendly Interface:** Straightforward and clean UI for hassle-free URL shortening.
+
+Here is the illustration; 
+
+![image](https://github.com/BenjaminKakai/link-shortner/assets/114109979/d7b4664d-5365-439e-925c-25e01d4163c5)
+
