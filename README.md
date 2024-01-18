@@ -23,6 +23,10 @@ This project presents a Simple URL Shortener, a web-based application designed t
 
 **Install Dependencies:** Run npm install to install the required Node.js packages.
 
+**Preview**
+![image](https://github.com/BenjaminKakai/LinkMinimizer/assets/114109979/92f51622-c459-4788-a7fc-66c963db8047)
+
+
 
 **Usage**
 
@@ -66,6 +70,19 @@ This project presents a Simple URL Shortener, a web-based application designed t
 **Custom URL Paths:** Future iterations could include the option for users to create custom short URL paths.
 
 **Expire URLs:** Implement functionality to expire URLs after a certain period or number of clicks.
+
+**Demonstration**
+
+I shortened this link; https://www.example.com/users/view?category=technology&article=how-to-create-a-url-shortening-service&session=9374hfhf93hf93h4f9h39fh3f93h4f93h4f93h&user=guest&trackingid=485hf4h84f4f4f4h84h4h4f84h4fh4f4
+ to get this link; http://localhost:3000/kxwnmb. As you can see, in the demonstration, the link leads to the same website.
+ ![image](https://github.com/BenjaminKakai/LinkMinimizer/assets/114109979/c778e158-c99e-4b15-a798-1e4897229b06)
+
+
+
+ The Link when clicked Opens; 
+ ![image](https://github.com/BenjaminKakai/LinkMinimizer/assets/114109979/f63d9526-8e3e-4f6d-9b2e-9d89ec9fc178)
+
+
 
 
 
