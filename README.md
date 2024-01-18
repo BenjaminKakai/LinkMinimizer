@@ -1,21 +1,35 @@
-**Link Shortener**
+**Introduction******
+This project presents a Simple URL Shortener, a web-based application designed to transform long, cumbersome URLs into shorter, more manageable versions. This system is part of a larger effort to understand and develop scalable URL shortening services. It's a straightforward, user-friendly application built using plain JavaScript, HTML, and CSS.**
 
-
-Welcome to the Link Shortener repository! This project offers a simple yet efficient solution to convert long URLs into shorter, more manageable links. Built with Node.js and Express, this URL shortener is easy to use and navigate, designed for both personal and professional use.
-
-**Features**
-**Efficient URL Shortening:** Quickly transform lengthy URLs into short, user-friendly links.
-
-
-**Analytics Tracking:** Gain insights into the usage of each shortened URL, including click counts and visitor data.
-
-
-**Scalable Performance:** Optimized to handle high volumes of requests without compromising speed or reliability.
-
-
-**User-Friendly Interface:** Straightforward and clean UI for hassle-free URL shortening.
-
-Here is the illustration; 
-
-![image](https://github.com/BenjaminKakai/link-shortner/assets/114109979/d7b4664d-5365-439e-925c-25e01d4163c5)
-
+Features**
+URL Shortening: Converts long URLs into short, manageable links.
+Click Analytics: Tracks clicks and unique visitors for each shortened URL.
+User-Friendly Interface: Clean and simple UI for easy navigation and use.
+In-Memory Storage: Temporary storage of URLs and analytics data.
+Error Handling: Provides feedback for invalid URLs or server errors.
+Installation
+Clone the Repository: git clone [repository URL]
+Navigate to the Project Directory: cd [local repository]
+Install Dependencies: Run npm install to install the required Node.js packages.
+Usage
+Start the Server: Run node server.js to start the application server.
+Access the Application: Open a web browser and go to http://localhost:3000.
+Shorten a URL: Enter a URL in the input field and click on "Shorten URL".
+View Shortened URL: A shortened version of the URL will be displayed, which can be shared or copied.
+View Analytics: Click on the shortened URL to view click and visitor analytics.
+Architecture
+Frontend: HTML, CSS for layout and styling; JavaScript for client-side logic.
+Backend: Express.js server handling API requests and URL redirection.
+Data Storage: Temporary in-memory storage for URLs and analytics.
+File Structure
+/public/index.html - Main HTML file for the frontend interface.
+/public/style.css - CSS file for styling the frontend.
+/public/script.js - JavaScript file managing frontend logic.
+/server.js - Node.js Express server for backend logic.
+Limitations and Future Work
+Persistence: Currently, the application uses in-memory storage. Future versions could implement database integration for persistence.
+Scalability: For handling more significant traffic, the system's scalability can be improved.
+Custom URL Paths: Future iterations could include the option for users to create custom short URL paths.
+Expire URLs: Implement functionality to expire URLs after a certain period or number of clicks.
+Acknowledgements
+This project is inspired by the principles laid out in the presentation "Design and Implementation of a Scalable URL Shortening Service: From Concept to Deployment". It is a simplified model intended for educational and prototyping purposes.
