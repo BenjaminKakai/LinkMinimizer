@@ -1,5 +1,13 @@
-document.getElementById('shortenBtn').addEventListener('click', function() {
-    var url = document.getElementById('urlInput').value;
+document.getElementById('shortenBtn').addEventListener('click', function () {
+    const urlInput = document.getElementById('urlInput');
+    const resultElement = document.getElementById('result');
+    
+    const url = urlInput.value.trim();
+    if (url === '') {
+        resultElement.textContent = 'Please enter a valid URL.';
+        return;
+    }
+    
     fetch('/shorten', {
         method: 'POST',
         headers: {
@@ -9,9 +17,36 @@ document.getElementById('shortenBtn').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('result').innerHTML = 'Shortened URL: <a href="' + data.shortUrl + '" target="_blank">' + data.shortUrl + '</a>';
+        const shortId = data.shortUrl.split('/').pop();
+        resultElement.innerHTML = `
+            Shortened URL: <a href="#" id="shortUrlLink">${data.shortUrl}</a>
+            <div id="analyticsResult"></div>
+        `;
+        
+        document.getElementById('shortUrlLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            fetch(`/analytics/${shortId}`)
+            .then(response => response.json())
+            .then(analyticsData => {
+                document.getElementById('analyticsResult').innerHTML = `
+                    <strong>Clicks:</strong> ${analyticsData.clicks}<br>
+                    <strong>Unique Visitors:</strong> ${analyticsData.uniqueVisitors}
+                `;
+
+                // Optionally, you can add a button or link here for the user to manually proceed to the URL
+                // Example: 
+                // document.getElementById('analyticsResult').innerHTML += '<br><button onclick="window.location.href=\'' + data.shortUrl + '\'">Go to Link</button>';
+            })
+            .catch(analyticsError => {
+                console.error('Analytics Error:', analyticsError);
+                // Directly redirecting to the URL in case of an analytics fetch error
+                window.location.href = data.shortUrl;
+            });
+        });
     })
     .catch(error => {
         console.error('Error:', error);
+        resultElement.textContent = 'An error occurred while shortening the URL.';
     });
 });
