@@ -3,6 +3,12 @@ Welcome to the Link Shortener repository! This project offers a simple yet effic
 
 **Features**
 **Efficient URL Shortening:** Quickly transform lengthy URLs into short, user-friendly links.
+
+
 **Analytics Tracking:** Gain insights into the usage of each shortened URL, including click counts and visitor data.
+
+
 **Scalable Performance:** Optimized to handle high volumes of requests without compromising speed or reliability.
+
+
 **User-Friendly Interface:** Straightforward and clean UI for hassle-free URL shortening.
