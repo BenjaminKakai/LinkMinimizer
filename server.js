@@ -1,26 +1,29 @@
 const express = require('express');
 const app = express();
+const path = require('path'); // Added to use path.join
+
 const PORT = 3000;
 
-app.use(express.json()); // Middleware for parsing JSON requests
-app.use(express.static('public')); // Serve static files from 'public' folder
+// Middleware for parsing JSON requests
+app.use(express.json());
 
-// Temporary in-memory 'database'
+// Serve static files from the 'public' directory (Make sure your HTML, CSS, and JS files are in this directory)
+app.use(express.static('public'));
+
+// Temporary in-memory 'database' for URLs
 let urlDatabase = {};
+
+// Your analytics data object
+const analyticsData = {};
 
 // Function to generate a short ID
 function generateShortId() {
-    // Simple random ID generation - consider a more robust method for production
     return Math.random().toString(36).substr(2, 6);
 }
 
 // Endpoint to create a shortened URL
 app.post('/shorten', (req, res) => {
     const originalUrl = req.body.url;
-    // Validation to ensure a URL is provided
-    if (!originalUrl) {
-        return res.status(400).json({ error: 'No URL provided' });
-    }
     const shortId = generateShortId();
     urlDatabase[shortId] = originalUrl;
     res.json({ shortUrl: `http://localhost:${PORT}/${shortId}` });
@@ -30,10 +33,33 @@ app.post('/shorten', (req, res) => {
 app.get('/:shortId', (req, res) => {
     const shortId = req.params.shortId;
     const originalUrl = urlDatabase[shortId];
+
     if (originalUrl) {
+        if (!analyticsData[shortId]) {
+            analyticsData[shortId] = { clicks: 0, visitors: new Set() };
+        }
+        analyticsData[shortId].clicks++;
+        analyticsData[shortId].visitors.add(req.ip);
+
         res.redirect(originalUrl);
     } else {
         res.sendStatus(404);
+    }
+});
+
+// Endpoint to fetch analytics for a given shortId
+app.get('/analytics/:shortId', (req, res) => {
+    const shortId = req.params.shortId;
+    const data = analyticsData[shortId];
+
+    if (data) {
+        res.json({
+            shortId: shortId,
+            clicks: data.clicks,
+            uniqueVisitors: data.visitors.size
+        });
+    } else {
+        res.status(404).json({ error: 'Analytics data not found for this ID' });
     }
 });
 
