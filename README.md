@@ -1,6 +1,6 @@
 **Introduction**
 
-This project presents a Simple URL Shortener, a web-based application designed to transform long, cumbersome URLs into shorter, more manageable versions. This system is part of a larger effort to understand and develop scalable URL-shortening services. It's a straightforward, user-friendly application built using plain JavaScript, HTML, and CSS.
+This project is a URL Shortener, a web-based application designed to transform long, cumbersome URLs into shorter, more manageable versions. This system is part of a larger effort to understand and develop scalable URL-shortening services. It's a straightforward, user-friendly application built using plain JavaScript, HTML, and CSS.
 
 **Features**
 
